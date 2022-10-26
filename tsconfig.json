@@ -1,19 +1,25 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "declaration": true,
-        "declarationMap": true,
-        "moduleResolution": "Node",
-        "removeComments": true,
-        "allowSyntheticDefaultImports": true,
-        "target": "es2017",
-        "sourceMap": true,
-        "outDir": "lib",
-        "incremental": true,
-        "skipLibCheck": true,
-        "strict": true,
-        "esModuleInterop": true,
-        "forceConsistentCasingInFileNames": true
-    },
-    "include": ["src"]
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "declarationMap": true,
+    "moduleResolution": "Node",
+    "removeComments": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2017",
+    "sourceMap": true,
+    "outDir": "dist",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }

@@ -2,8 +2,8 @@
   "name": "@cptsoap/tools",
   "version": "1.0.0",
   "description": "",
-  "main": "lib/index.js",
-  "types": "lib",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cowbear6598/soap-package.git"
@@ -21,10 +21,10 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@types/express": "^4.17.14"
+    "@types/express": "^4.17.14",
+    "typescript": "^4.8.4"
   },
   "dependencies": {
-    "express": "^4.18.2",
-    "typescript": "^4.8.4"
+    "express": "^4.18.2"
   }
 }
