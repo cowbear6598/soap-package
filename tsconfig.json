@@ -3,14 +3,17 @@
         "module": "commonjs",
         "declaration": true,
         "declarationMap": true,
+        "moduleResolution": "Node",
         "removeComments": true,
         "allowSyntheticDefaultImports": true,
         "target": "es2017",
         "sourceMap": true,
-        "outDir": "./lib",
-        "baseUrl": "./",
-        "incremental": true
+        "outDir": "lib",
+        "incremental": true,
+        "skipLibCheck": true,
+        "strict": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true
     },
-    "include": ["src/**/*"],
-    "exclude": ["node_modules", "test", "lib", "**/*spec.ts"]
+    "include": ["src"]
 }
