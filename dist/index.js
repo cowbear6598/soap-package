@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.unixTime = exports.response = void 0;
+exports.jsonValid = exports.unixTime = exports.response = void 0;
 const response = (res, status, message, data) => {
     return res.status(200).json({
         status: status,
@@ -14,4 +14,11 @@ const unixTime = (timezone) => {
     return utcTime + timezone * 60 * 60 * 1000;
 };
 exports.unixTime = unixTime;
+const jsonValid = (err, req, res, next) => {
+    if (err.status === 400 && 'body' in err) {
+        return response(res, 100, "資料錯誤");
+    }
+    return next();
+};
+exports.jsonValid = jsonValid;
 //# sourceMappingURL=index.js.map
