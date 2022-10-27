@@ -1,15 +1,11 @@
 {
-  "name": "@cowbear6598/tools",
+  "name": "@soap/tools",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:cowbear6598/soap-package.git"
-  },
   "scripts": {
-    "build": "tsc -p ."
+    "build": "tsc"
   },
   "keywords": [
     "soap",
