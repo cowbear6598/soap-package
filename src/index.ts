@@ -13,12 +13,15 @@ const unixTime = (timezone: number) => {
     return utcTime + timezone * 60 * 60 * 1000;
 }
 
-const jsonValid = (err: any, req: Request, res: Response, next: NextFunction) => {
-    if(err.status === 400 && 'body' in err){
-        return response(res, 100, "資料錯誤");
-    }
+const jsonValid = function () {
+    return (req: Request, res: Response, next: NextFunction) => {
+        json()(req,res, (err) => {
+            if(err)
+                return response(res, 100, "資料錯誤");
 
-    return next();
+            return next();
+        })
+    }
 }
 
 export {response, unixTime, jsonValid}
