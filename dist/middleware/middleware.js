@@ -20,5 +20,5 @@ class Middleware {
         };
     }
 }
-exports.default = Middleware;
+exports.default = new Middleware();
 //# sourceMappingURL=middleware.js.map

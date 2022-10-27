@@ -1,6 +1,6 @@
 import {Response} from "express";
 import {createSecret} from "./encryption";
-import Middleware from "./middleware/middleware";
+import middleware from "./middleware/middleware";
 
 const response = (res: Response, status: number, message: string, data?: any) => {
     return res.status(200).json({
@@ -15,4 +15,5 @@ const unixTime = (timezone: number) => {
     return utcTime + timezone * 60 * 60 * 1000;
 }
 
-export {response, unixTime, Middleware, createSecret}
+
+export {response, unixTime, middleware, createSecret}
