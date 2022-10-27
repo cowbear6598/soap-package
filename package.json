@@ -1,5 +1,5 @@
 {
-  "name": "@soap/tools",
+  "name": "@cowbear6598/tools",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -16,7 +16,7 @@
     "tool"
   ],
   "author": {
-    "name": "CptSoap",
+    "name": "cowbear6598",
     "email": "cowbear6598@gmail.com"
   },
   "license": "MIT",
