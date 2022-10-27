@@ -1,7 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.jsonValid = exports.unixTime = exports.response = void 0;
+exports.createSecret = exports.jsonValid = exports.unixTime = exports.response = void 0;
 const express_1 = require("express");
+const encryption_1 = require("./encryption");
+Object.defineProperty(exports, "createSecret", { enumerable: true, get: function () { return encryption_1.createSecret; } });
 const response = (res, status, message, data) => {
     return res.status(200).json({
         status: status,
@@ -15,7 +17,7 @@ const unixTime = (timezone) => {
     return utcTime + timezone * 60 * 60 * 1000;
 };
 exports.unixTime = unixTime;
-const jsonValid = function () {
+function jsonValid() {
     return (req, res, next) => {
         (0, express_1.json)()(req, res, (err) => {
             if (err)
@@ -23,6 +25,6 @@ const jsonValid = function () {
             return next();
         });
     };
-};
+}
 exports.jsonValid = jsonValid;
 //# sourceMappingURL=index.js.map

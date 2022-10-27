@@ -1,4 +1,5 @@
 import {NextFunction, Request, Response, json} from "express";
+import {createSecret} from "./encryption";
 
 const response = (res: Response, status: number, message: string, data?: any) => {
     return res.status(200).json({
@@ -13,10 +14,10 @@ const unixTime = (timezone: number) => {
     return utcTime + timezone * 60 * 60 * 1000;
 }
 
-const jsonValid = function () {
+function jsonValid() {
     return (req: Request, res: Response, next: NextFunction) => {
-        json()(req,res, (err) => {
-            if(err)
+        json()(req, res, (err) => {
+            if (err)
                 return response(res, 100, "資料錯誤");
 
             return next();
@@ -24,4 +25,5 @@ const jsonValid = function () {
     }
 }
 
-export {response, unixTime, jsonValid}
+
+export {response, unixTime, jsonValid, createSecret}
