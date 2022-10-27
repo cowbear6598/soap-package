@@ -5,9 +5,12 @@ class Encryption {
         return randomBytes(25).toString('hex').toUpperCase();
     };
 
+    Hmac(plain_text: string, secret: string) {
+        return createHmac('sha256', secret).update(plain_text).digest().toString('hex');
+    }
+
     verify(plain_text: string, secret: string, encrypted: string) {
-        const correctSign = createHmac('sha256', secret).update(plain_text).digest().toString('hex');
-        return correctSign == encrypted;
+        return this.Hmac(plain_text, secret) == encrypted;
     }
 }
 

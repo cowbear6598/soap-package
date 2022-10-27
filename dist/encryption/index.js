@@ -6,9 +6,11 @@ class Encryption {
         return (0, crypto_1.randomBytes)(25).toString('hex').toUpperCase();
     }
     ;
+    Hmac(plain_text, secret) {
+        return (0, crypto_1.createHmac)('sha256', secret).update(plain_text).digest().toString('hex');
+    }
     verify(plain_text, secret, encrypted) {
-        const correctSign = (0, crypto_1.createHmac)('sha256', secret).update(plain_text).digest().toString('hex');
-        return correctSign == encrypted;
+        return this.Hmac(plain_text, secret) == encrypted;
     }
 }
 exports.default = new Encryption();
