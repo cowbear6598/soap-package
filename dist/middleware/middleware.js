@@ -15,7 +15,7 @@ class Middleware {
     ;
     recordRequest(logger) {
         return (req, res, next) => {
-            logger.debug(`${req.ip} - ${req.url}`);
+            logger.log(`${req.ip} - ${req.url}`);
             next();
         };
     }

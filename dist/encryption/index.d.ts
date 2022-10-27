@@ -1,4 +1,7 @@
-declare const createSecret: () => string;
-declare const verify: (plain_text: string, secret: string, encrypted: string) => boolean;
-export { createSecret, verify };
+declare class Encryption {
+    createSecret(): string;
+    verify(plain_text: string, secret: string, encrypted: string): boolean;
+}
+declare const _default: Encryption;
+export default _default;
 //# sourceMappingURL=index.d.ts.map
