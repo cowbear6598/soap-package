@@ -4,8 +4,12 @@
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cowbear6598/soap-package.git"
+  },
   "scripts": {
-    "build": "tsc"
+    "build": "tsc -p ."
   },
   "keywords": [
     "soap",
