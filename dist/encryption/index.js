@@ -13,7 +13,7 @@ class Encryption {
         const iv = Buffer.from('');
         const bufferCipherText = Buffer.from(cipherText, "hex");
         const cipher = (0, crypto_1.createDecipheriv)("aes-256-ecb", key, iv);
-        return Buffer.concat([cipher.update(bufferCipherText), cipher.final()]);
+        return Buffer.concat([cipher.update(bufferCipherText), cipher.final()]).toString();
     }
     createSecret(key) {
         const token = (0, crypto_1.randomBytes)(25).toString('hex').toUpperCase();

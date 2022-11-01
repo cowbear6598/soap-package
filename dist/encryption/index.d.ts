@@ -1,7 +1,6 @@
-/// <reference types="node" />
 declare class Encryption {
     aesEncrypt(plainText: string, key: string): string;
-    aesDecrypt(cipherText: string, key: string): Buffer;
+    aesDecrypt(cipherText: string, key: string): string;
     createSecret(key: string): {
         token: string;
         encrypted: string;

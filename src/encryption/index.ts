@@ -17,7 +17,7 @@ class Encryption {
         const bufferCipherText = Buffer.from(cipherText, "hex");
 
         const cipher = createDecipheriv("aes-256-ecb", key, iv);
-        return Buffer.concat([cipher.update(bufferCipherText), cipher.final()]);
+        return Buffer.concat([cipher.update(bufferCipherText), cipher.final()]).toString();
     }
 
     createSecret(key: string) {
