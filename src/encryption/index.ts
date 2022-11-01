@@ -1,5 +1,4 @@
 import {createCipheriv, createDecipheriv, createHmac, randomBytes} from "crypto";
-import e from "express";
 
 class Encryption {
     aesEncrypt(plainText: string, key: string) {
@@ -32,10 +31,6 @@ class Encryption {
 
     Hmac(plain_text: string, secret: string) {
         return createHmac('sha256', secret).update(plain_text).digest().toString('hex');
-    }
-
-    verify(plain_text: string, secret: string, encrypted: string) {
-        return this.Hmac(plain_text, secret) == encrypted;
     }
 }
 
