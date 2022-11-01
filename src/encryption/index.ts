@@ -3,10 +3,9 @@ import {createCipheriv, createDecipheriv, createHmac, randomBytes} from "crypto"
 class Encryption {
     aesEncrypt(plainText: string, key: string) {
         const iv = Buffer.from('');
-        const bufferKey = Buffer.from(key, 'hex');
         const bufferPlainText = Buffer.from(plainText, 'utf-8');
 
-        const cipher = createCipheriv('aes-256-ecb', bufferKey, iv);
+        const cipher = createCipheriv('aes-256-ecb', key, iv);
         const encrypted = Buffer.concat([cipher.update(bufferPlainText), cipher.final()]);
 
         return encrypted.toString('hex');
@@ -14,13 +13,10 @@ class Encryption {
 
     aesDecrypt(cipherText: string, key: string) {
         const iv = Buffer.from('');
-        const bufferKey = Buffer.from(key, 'hex');
-        const bufferCipherText = Buffer.from(cipherText, "utf-8");
+        const bufferCipherText = Buffer.from(cipherText, "hex");
 
-        const cipher = createDecipheriv("aes-256-ecb", bufferKey, iv);
-        const decrypted = Buffer.concat([cipher.update(bufferCipherText), cipher.final()]);
-
-        return decrypted.toString('hex');
+        const cipher = createDecipheriv("aes-256-ecb", key, iv);
+        return Buffer.concat([cipher.update(bufferCipherText), cipher.final()]);
     }
 
     createSecret(key: string) {

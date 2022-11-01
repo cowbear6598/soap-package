@@ -4,19 +4,16 @@ const crypto_1 = require("crypto");
 class Encryption {
     aesEncrypt(plainText, key) {
         const iv = Buffer.from('');
-        const bufferKey = Buffer.from(key, 'hex');
         const bufferPlainText = Buffer.from(plainText, 'utf-8');
-        const cipher = (0, crypto_1.createCipheriv)('aes-256-ecb', bufferKey, iv);
+        const cipher = (0, crypto_1.createCipheriv)('aes-256-ecb', key, iv);
         const encrypted = Buffer.concat([cipher.update(bufferPlainText), cipher.final()]);
         return encrypted.toString('hex');
     }
     aesDecrypt(cipherText, key) {
         const iv = Buffer.from('');
-        const bufferKey = Buffer.from(key, 'hex');
-        const bufferCipherText = Buffer.from(cipherText, "utf-8");
-        const cipher = (0, crypto_1.createDecipheriv)("aes-256-ecb", bufferKey, iv);
-        const decrypted = Buffer.concat([cipher.update(bufferCipherText), cipher.final()]);
-        return decrypted.toString('hex');
+        const bufferCipherText = Buffer.from(cipherText, "hex");
+        const cipher = (0, crypto_1.createDecipheriv)("aes-256-ecb", key, iv);
+        return Buffer.concat([cipher.update(bufferCipherText), cipher.final()]);
     }
     createSecret(key) {
         const token = (0, crypto_1.randomBytes)(25).toString('hex').toUpperCase();
