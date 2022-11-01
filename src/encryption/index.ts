@@ -1,4 +1,5 @@
 import {createCipheriv, createDecipheriv, createHmac, randomBytes} from "crypto";
+import e from "express";
 
 class Encryption {
     aesEncrypt(plainText: string, key: string) {
@@ -21,7 +22,12 @@ class Encryption {
 
     createSecret(key: string) {
         const token = randomBytes(25).toString('hex').toUpperCase();
-        return this.aesEncrypt(token, key);
+        const encryptedToken = this.aesEncrypt(token, key);
+
+        return {
+            'token': token,
+            'encrypted': encryptedToken
+        };
     }
 
     Hmac(plain_text: string, secret: string) {

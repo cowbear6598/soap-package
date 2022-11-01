@@ -17,7 +17,11 @@ class Encryption {
     }
     createSecret(key) {
         const token = (0, crypto_1.randomBytes)(25).toString('hex').toUpperCase();
-        return this.aesEncrypt(token, key);
+        const encryptedToken = this.aesEncrypt(token, key);
+        return {
+            'token': token,
+            'encrypted': encryptedToken
+        };
     }
     Hmac(plain_text, secret) {
         return (0, crypto_1.createHmac)('sha256', secret).update(plain_text).digest().toString('hex');
