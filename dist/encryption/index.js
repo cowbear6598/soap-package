@@ -2,10 +2,26 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const crypto_1 = require("crypto");
 class Encryption {
-    createSecret() {
-        return (0, crypto_1.randomBytes)(25).toString('hex').toUpperCase();
+    aesEncrypt(plainText, key) {
+        const iv = Buffer.from('');
+        const bufferKey = Buffer.from(key, 'hex');
+        const bufferPlainText = Buffer.from(plainText, 'utf-8');
+        const cipher = (0, crypto_1.createCipheriv)('aes-256-ecb', bufferKey, iv);
+        const encrypted = Buffer.concat([cipher.update(bufferPlainText), cipher.final()]);
+        return encrypted.toString('hex');
     }
-    ;
+    aesDecrypt(cipherText, key) {
+        const iv = Buffer.from('');
+        const bufferKey = Buffer.from(key, 'hex');
+        const bufferCipherText = Buffer.from(cipherText, "utf-8");
+        const cipher = (0, crypto_1.createDecipheriv)("aes-256-ecb", bufferKey, iv);
+        const decrypted = Buffer.concat([cipher.update(bufferCipherText), cipher.final()]);
+        return decrypted.toString('hex');
+    }
+    createSecret(key) {
+        const token = (0, crypto_1.randomBytes)(25).toString('hex').toUpperCase();
+        return this.aesEncrypt(token, key);
+    }
     Hmac(plain_text, secret) {
         return (0, crypto_1.createHmac)('sha256', secret).update(plain_text).digest().toString('hex');
     }
