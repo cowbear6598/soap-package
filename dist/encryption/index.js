@@ -15,13 +15,16 @@ class Encryption {
         const cipher = (0, crypto_1.createDecipheriv)("aes-256-ecb", key, iv);
         return Buffer.concat([cipher.update(bufferCipherText), cipher.final()]).toString();
     }
-    createSecret(key) {
-        const token = (0, crypto_1.randomBytes)(25).toString('hex').toUpperCase();
+    createSecret(key, size = 25) {
+        const token = (0, crypto_1.randomBytes)(size).toString('hex');
         const encryptedToken = this.aesEncrypt(token, key);
         return {
             'token': token,
             'encrypted': encryptedToken
         };
+    }
+    createRandom(size = 25) {
+        return (0, crypto_1.randomBytes)(size).toString('hex');
     }
     Hmac(plain_text, secret) {
         return (0, crypto_1.createHmac)('sha256', secret).update(plain_text).digest().toString('hex');

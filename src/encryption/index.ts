@@ -19,14 +19,18 @@ class Encryption {
         return Buffer.concat([cipher.update(bufferCipherText), cipher.final()]).toString();
     }
 
-    createSecret(key: string) {
-        const token = randomBytes(25).toString('hex').toUpperCase();
+    createSecret(key: string, size: number = 25) {
+        const token = randomBytes(size).toString('hex');
         const encryptedToken = this.aesEncrypt(token, key);
 
         return {
             'token': token,
             'encrypted': encryptedToken
         };
+    }
+
+    createRandom(size: number = 25) {
+        return randomBytes(size).toString('hex');
     }
 
     Hmac(plain_text: string, secret: string) {
