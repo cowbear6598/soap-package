@@ -3,11 +3,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.encryption = exports.middleware = exports.unixTime = exports.response = void 0;
+exports.Encryption = exports.Middleware = exports.unixTime = exports.response = void 0;
 const encryption_1 = __importDefault(require("./encryption"));
-exports.encryption = encryption_1.default;
+exports.Encryption = encryption_1.default;
 const middleware_1 = __importDefault(require("./middleware/middleware"));
-exports.middleware = middleware_1.default;
+exports.Middleware = middleware_1.default;
 const response = (res, status, message, data) => {
     return res.status(200).json({
         status: status,

@@ -1,7 +1,7 @@
 import { Response } from "express";
-import encryption from "./encryption";
-import middleware from "./middleware/middleware";
+import Encryption from "./encryption";
+import Middleware from "./middleware/middleware";
 declare const response: (res: Response, status: number, message: string, data?: any) => Response<any, Record<string, any>>;
 declare const unixTime: (timezone: number) => number;
-export { response, unixTime, middleware, encryption };
+export { response, unixTime, Middleware, Encryption };
 //# sourceMappingURL=index.d.ts.map
