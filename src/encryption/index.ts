@@ -20,7 +20,7 @@ class Encryption {
     }
 
     createSecret(key: string, size: number = 25) {
-        const token = randomBytes(size).toString('hex');
+        const token = randomBytes(size).toString('hex').toUpperCase();
         const encryptedToken = this.aesEncrypt(token, key);
 
         return {
@@ -30,7 +30,7 @@ class Encryption {
     }
 
     createRandom(size: number = 25) {
-        return randomBytes(size).toString('hex');
+        return randomBytes(size).toString('hex').toUpperCase();
     }
 
     Hmac(plain_text: string, secret: string) {

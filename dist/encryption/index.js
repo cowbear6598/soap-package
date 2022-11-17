@@ -16,7 +16,7 @@ class Encryption {
         return Buffer.concat([cipher.update(bufferCipherText), cipher.final()]).toString();
     }
     createSecret(key, size = 25) {
-        const token = (0, crypto_1.randomBytes)(size).toString('hex');
+        const token = (0, crypto_1.randomBytes)(size).toString('hex').toUpperCase();
         const encryptedToken = this.aesEncrypt(token, key);
         return {
             'token': token,
@@ -24,7 +24,7 @@ class Encryption {
         };
     }
     createRandom(size = 25) {
-        return (0, crypto_1.randomBytes)(size).toString('hex');
+        return (0, crypto_1.randomBytes)(size).toString('hex').toUpperCase();
     }
     Hmac(plain_text, secret) {
         return (0, crypto_1.createHmac)('sha256', secret).update(plain_text).digest().toString('hex');
