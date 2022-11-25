@@ -1,4 +1,5 @@
 import {createCipheriv, createDecipheriv, createHmac, randomBytes} from "crypto";
+import base64url from "base64url";
 
 class Encryption {
     aesEncrypt(plainText: string, key: string) {
@@ -19,22 +20,30 @@ class Encryption {
         return Buffer.concat([cipher.update(bufferCipherText), cipher.final()]).toString();
     }
 
-    createSecret(key: string, size: number = 25) {
-        const token = randomBytes(size).toString('hex').toUpperCase();
-        const encryptedToken = this.aesEncrypt(token, key);
-
-        return {
-            'token': token,
-            'encrypted': encryptedToken
-        };
-    }
-
     createRandom(size: number = 25) {
         return randomBytes(size).toString('hex').toUpperCase();
     }
 
-    Hmac(plain_text: string, secret: string) {
-        return createHmac('sha256', secret).update(plain_text).digest().toString('hex');
+    createJWT(iss: any, iat: number, exp: number, sub: string, key: string) {
+        const header = {
+            alg: "HS256",
+            typ: "JWT"
+        }
+        const headerHash = base64url(JSON.stringify(header));
+
+        const payload = {
+            iss: iss,
+            iat: iat,
+            exp: exp,
+            sub: sub
+        }
+        const payloadHash = base64url(JSON.stringify(payload));
+
+        const signature = base64url.fromBase64(createHmac('SHA256', key)
+            .update(headerHash + "." + payloadHash)
+            .digest('base64'));
+
+        return headerHash + "." + payloadHash + "." + signature;
     }
 }
 
