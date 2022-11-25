@@ -24,6 +24,10 @@ class Encryption {
         return randomBytes(size).toString('hex').toUpperCase();
     }
 
+    Hmac(plain_text: string, secret: string) {
+        return createHmac('sha256', secret).update(plain_text).digest().toString('hex');
+    }
+
     createJWT(iss: any, iat: number, exp: number, sub: string, key: string) {
         const header = {
             alg: "HS256",
