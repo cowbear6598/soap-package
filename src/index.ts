@@ -21,4 +21,4 @@ const unixTimeMilliSecond = (timezone: number) => {
 }
 
 
-export {response, unixTimeMilliSecond, Middleware, Encryption}
+export {response, unixTime, unixTimeMilliSecond, Middleware, Encryption}

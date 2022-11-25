@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Encryption = exports.Middleware = exports.unixTimeMilliSecond = exports.response = void 0;
+exports.Encryption = exports.Middleware = exports.unixTimeMilliSecond = exports.unixTime = exports.response = void 0;
 const encryption_1 = __importDefault(require("./encryption"));
 exports.Encryption = encryption_1.default;
 const middleware_1 = __importDefault(require("./middleware/middleware"));
@@ -20,6 +20,7 @@ const unixTime = (timezone) => {
     const utcTime = Math.trunc(new Date().getTime() / 1000) + new Date().getTimezoneOffset() * 60;
     return utcTime + timezone * 60 * 60;
 };
+exports.unixTime = unixTime;
 const unixTimeMilliSecond = (timezone) => {
     const utcTime = new Date().getTime() + new Date().getTimezoneOffset() * 60 * 1000;
     return utcTime + timezone * 60 * 60 * 1000;
