@@ -2,8 +2,8 @@ import {Response} from "express";
 import Encryption from "./encryption";
 import Middleware from "./middleware/middleware";
 
-const response = (res: Response, status: number, message: string, data?: any) => {
-    return res.status(200).json({
+const response = (res: Response, status: number, message: string, data?: any, htmlStatus: number = 200) => {
+    return res.status(htmlStatus).json({
         status: status,
         message: message,
         data: data

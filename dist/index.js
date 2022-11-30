@@ -8,8 +8,8 @@ const encryption_1 = __importDefault(require("./encryption"));
 exports.Encryption = encryption_1.default;
 const middleware_1 = __importDefault(require("./middleware/middleware"));
 exports.Middleware = middleware_1.default;
-const response = (res, status, message, data) => {
-    return res.status(200).json({
+const response = (res, status, message, data, htmlStatus = 200) => {
+    return res.status(htmlStatus).json({
         status: status,
         message: message,
         data: data
