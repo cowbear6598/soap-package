@@ -2,7 +2,7 @@ import {createCipheriv, createDecipheriv, createHmac, randomBytes} from "crypto"
 import base64url from "base64url";
 
 class Encryption {
-    aesEncrypt(plainText: string, key: string) {
+    aesEncrypt = (plainText: string, key: string) => {
         const iv = Buffer.from('');
         const bufferPlainText = Buffer.from(plainText, 'utf-8');
 
@@ -12,7 +12,7 @@ class Encryption {
         return encrypted.toString('hex');
     }
 
-    aesDecrypt(cipherText: string, key: string) {
+    aesDecrypt = (cipherText: string, key: string) => {
         const iv = Buffer.from('');
         const bufferCipherText = Buffer.from(cipherText, "hex");
 
@@ -20,15 +20,15 @@ class Encryption {
         return Buffer.concat([cipher.update(bufferCipherText), cipher.final()]).toString();
     }
 
-    createRandom(size: number = 25) {
+    createRandom = (size: number = 25) => {
         return randomBytes(size).toString('hex').toUpperCase();
     }
 
-    Hmac(plain_text: string, secret: string) {
+    Hmac = (plain_text: string, secret: string) => {
         return createHmac('sha256', secret).update(plain_text).digest().toString('hex');
     }
 
-    createJWT(iss: any, iat: number, exp: number, sub: string, key: string) {
+    createJWT = (iss: any, iat: number, exp: number, sub: string, key: string) => {
         const header = {
             alg: "HS256",
             typ: "JWT"
